@@ -20,7 +20,5 @@ public class PlayerMovementController : AbstractCharacter {
 		move (direction);
 	}
 
-	void OnCollisionEnter (Collision  collision) {
-		Debug.Log ("Hello");
-	}
+
 }

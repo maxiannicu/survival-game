@@ -20,8 +20,10 @@ public class DroidCharacter : AbstractCharacter {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D collider) {
-		Debug.Log ("Hello");
-		Destroy (collider.gameObject);
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.tag == "Capsule") {
+			Debug.Log ("Capsule detected");
+		}
+
 	}
 }
