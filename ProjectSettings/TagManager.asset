@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Capsule
   - Database
+  - Farmer
   layers:
   - Default
   - TransparentFX
