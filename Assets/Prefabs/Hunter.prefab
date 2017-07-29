@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212262274295614866}
   - component: {fileID: 60322868627644244}
   - component: {fileID: 50375586937796908}
+  - component: {fileID: 114211932249928630}
   m_Layer: 10
   m_Name: Hunter
   m_TagString: Untagged
@@ -102,6 +103,18 @@ PolygonCollider2D:
       - {x: 0.55, y: -0.48}
       - {x: 0.55, y: -0.28}
       - {x: 0.44, y: -0.25}
+--- !u!114 &114211932249928630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821389859177678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac300822b34f354f81122803cab6b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
 --- !u!212 &212262274295614866
 SpriteRenderer:
   m_ObjectHideFlags: 1
