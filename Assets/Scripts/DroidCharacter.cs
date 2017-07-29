@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementController : AbstractCharacter {
+public class DroidCharacter : AbstractCharacter {
+
+	private bool isWorking;
 
 	// Use this for initialization
 	void Start () {
-		Speed = 9f;
+		Speed = 0.3f;
+		isWorking = false;
 	}
-
-
+	
+	// Update is called once per frame
 	void Update () {
-		DirectionUpdate ();
-	}
 
-
-	private void DirectionUpdate(){
-		var direction = Input.GetAxis ("Horizontal");
-		move (direction);
+		if (isWorking) {
+			move (-1);
+		}
 	}
 
 	void OnTriggerEnter(Collider collider) {

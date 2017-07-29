@@ -91,7 +91,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!60 &60237296888129234
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -101,7 +101,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -178,9 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf42da760f53e640acf71562b2dd109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 50264329075928348}
-  velocity: 10
-  jumpForce: 10
+  Speed: 0
+  Life: 100
+  rigidBody: {fileID: 50264329075928348}
 --- !u!212 &212852217810397008
 SpriteRenderer:
   m_ObjectHideFlags: 1
