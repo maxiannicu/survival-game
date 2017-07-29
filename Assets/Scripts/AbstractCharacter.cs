@@ -24,6 +24,13 @@ public class AbstractCharacter : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll) {
+		Debug.Log ("DSAdas");
+		if (coll.gameObject.tag == "Enemy")
+			coll.gameObject.SendMessage("ApplyDamage", 10);
+
+	}
+
 
 
 }
