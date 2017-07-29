@@ -54,7 +54,7 @@ public class DroidCharacter : AbstractCharacter {
 		}
 	}
 
-	private int getRandomDirection() {
+	private int GetRandomDirection() {
 		return random.NextDouble () > 0.5 ? -1 : 1;
 	}
 }

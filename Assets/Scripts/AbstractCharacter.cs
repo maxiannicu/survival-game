@@ -30,7 +30,4 @@ public class AbstractCharacter : MonoBehaviour {
 			coll.gameObject.SendMessage("ApplyDamage", 10);
 
 	}
-
-
-
 }

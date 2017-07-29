@@ -3,8 +3,7 @@ using AssemblyCSharp;
 using System.Collections;
 
 namespace AssemblyCSharp {
-	public sealed class JobService {
-		
+	public sealed class JobService {		
 		private static Queue tasks = new Queue();
 
 		private JobService() {
@@ -17,7 +16,5 @@ namespace AssemblyCSharp {
 		public static void addTask(Task task) {
 			tasks.Enqueue(task);
 		}
-
-
 	}
 }
