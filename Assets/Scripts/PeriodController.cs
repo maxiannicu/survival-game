@@ -33,7 +33,9 @@ public class PeriodController : MonoBehaviour {
 			CurrentPeriod = (CurrentPeriod == Period.Day) ? Period.Night : Period.Day;
 			_ellapsedTime = 0;
 
-			PeriodChangeEvent (this,new PeriodChangeEvent(CurrentPeriod));
+			if (PeriodChangeEvent != null) {
+				PeriodChangeEvent (this, new PeriodChangeEvent (CurrentPeriod));
+			}
 		}
 	}
 	#endregion

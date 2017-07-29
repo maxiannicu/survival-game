@@ -30,7 +30,9 @@ public class CapsuleStore : MonoBehaviour {
 	public void AddCapsule(){
 		var oldBalance = _capsuleCount;
 		_capsuleCount++;
-		CapsuleChangeEvent (this, new CapsuleBalanceChanged (oldBalance,_capsuleCount));
+		if (CapsuleChangeEvent != null) {
+			CapsuleChangeEvent (this, new CapsuleBalanceChanged (oldBalance, _capsuleCount));
+		}
 	}
 	#endregion
 }
