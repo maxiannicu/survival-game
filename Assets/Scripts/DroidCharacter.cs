@@ -14,7 +14,7 @@ public class DroidCharacter : AbstractCharacter {
 
 	// Use this for initialization
 	void Start () {
-		Speed = 5f;
+		Speed = 0;
 		isDead = true;
 		hasJobAssigned = false;
 		isGoingToDatabase = false;

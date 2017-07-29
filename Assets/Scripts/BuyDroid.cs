@@ -5,16 +5,33 @@ using System;
 
 public class BuyDroid : MonoBehaviour {
 
-	private bool allowBuying = true;
+	private bool allowBuying;
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update() {
+		BuyingDroid ();
+	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.tag == "Capsule") {
+			CapsuleStore.AddCapsule ();
+			Destroy (coll.gameObject);
+			Debug.Log ("Capsule detected");
+		}
+
+		if (coll.gameObject.tag == "Farmer" ) {
+			allowBuying = true;
+			Debug.Log ("Farmer detected");
+		}
+	}
+
+	private void BuyingDroid(){
 		if (allowBuying) {
 			if (Input.GetKeyDown(KeyCode.B)) {
+				Debug.Log ("Try to buy");
 				try {
 					Debug.Log("Droid bought");
 					CapsuleStore.BuyDroid ();
@@ -24,12 +41,4 @@ public class BuyDroid : MonoBehaviour {
 			}
 		}
 	}
-
-	void OnTrigerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Farmer") {
-			allowBuying = true;
-			Debug.Log ("Farmer detected");
-		}
-	}
-
 }
