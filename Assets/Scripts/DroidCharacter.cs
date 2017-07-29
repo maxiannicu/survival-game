@@ -9,7 +9,7 @@ public class DroidCharacter : AbstractCharacter {
 	// Use this for initialization
 	void Start () {
 		Speed = 0.3f;
-		isWorking = false;
+		isWorking = true;
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,7 @@ public class DroidCharacter : AbstractCharacter {
 		}
 	}
 
-	void OnTriggerEnter(Collider collider) {
+	void OnTriggerEnter2D (Collider2D collider) {
 		Debug.Log ("Hello");
 		Destroy (collider.gameObject);
 	}
