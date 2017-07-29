@@ -8,10 +8,6 @@ public class CapsuleStore : MonoBehaviour {
 	private int _capsuleCount = 0;
 	#endregion
 
-	#region Events
-	public event EventHandler<CapsuleBalanceChanged> CapsuleChangeEvent;
-	#endregion
-
 	#region Properties
 	public int Capsules {
 		get {
@@ -21,18 +17,18 @@ public class CapsuleStore : MonoBehaviour {
 
 	public int MaxCapsules {
 		get {
-			return 100;
+			return 10;
 		}
 	}
 	#endregion
 
 	#region Methods
 	public void AddCapsule(){
+		if (Capsules >= MaxCapsules)
+			return;
+		
 		var oldBalance = _capsuleCount;
 		_capsuleCount++;
-		if (CapsuleChangeEvent != null) {
-			CapsuleChangeEvent (this, new CapsuleBalanceChanged (oldBalance, _capsuleCount));
-		}
 	}
 	#endregion
 }
