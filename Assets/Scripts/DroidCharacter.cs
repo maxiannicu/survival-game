@@ -18,7 +18,7 @@ public class DroidCharacter : AbstractCharacter {
 		isDead = true;
 		hasJobAssigned = false;
 		isGoingToDatabase = false;
-		direction = getRandomDirection ();
+		direction = -1;
 		Debug.Log (direction);
 	}
 	

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PeriodController : MonoBehaviour {
+public class PeriodController {
 	#region Fields
 	private float _ellapsedTime;
 	public int PeriodTime = 20;
+	public static PeriodController Instance;
 	#endregion
 
 	#region Events
@@ -24,6 +25,7 @@ public class PeriodController : MonoBehaviour {
 
 	public void Start(){
 		CurrentPeriod = Period.Day;
+		Instance = this;
 	}
 
 	public void Update(){
