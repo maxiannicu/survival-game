@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class CapsuleGenerator : MonoBehaviour {
 	private System.Random _random = new System.Random();
-	private const float _scanInterval = 1;
+	private const float _scanInterval = Constants.Game.CapsuleSpawnInterval;
 	private float _lastScanTime = _scanInterval;
 
 	public Vector2 GenerationRange; // range of capsule generation
 	public float GenerationPositionY = 0;
 	public GameObject Capsule;
 	public GameObject GenerationLayer;
-	public int MaxCapsuleAtOneTime = 10;
-
-			
+	public int MaxCapsuleAtOneTime = Constants.Game.MaxCapsules;
+				
 	// Update is called once per frame
 	public void Update () {
 		_lastScanTime += Time.deltaTime;

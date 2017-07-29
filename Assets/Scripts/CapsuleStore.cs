@@ -6,8 +6,8 @@ using System;
 public static class CapsuleStore {
 	
 	#region Fields
-	private static int _capsuleCount = 0;
-	private const int _droidPrice = 1;
+	private static int _capsuleCount = Constants.Game.InitialCapsules;
+	private const int _droidPrice = Constants.Prices.Droid;
 	#endregion
 
 	#region Properties
@@ -19,7 +19,7 @@ public static class CapsuleStore {
 
 	public static int MaxCapsules {
 		get {
-			return 10;
+			return Constants.Game.MaxCapsules;
 		}
 	}
 	#endregion

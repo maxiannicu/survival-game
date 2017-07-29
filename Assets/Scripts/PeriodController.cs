@@ -6,7 +6,7 @@ using System;
 public class PeriodController {
 	#region Fields
 	private float _ellapsedTime;
-	public int PeriodTime = 20;
+	public int PeriodTime = Constants.Game.PeriodTime;
 	public static PeriodController Instance;
 	#endregion
 
