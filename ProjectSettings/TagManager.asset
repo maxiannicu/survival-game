@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Sky
   - GameObjects
-  - 
+  - Player
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1450187413
+    locked: 0
+  - name: Player
+    uniqueID: 2117088763
     locked: 0
