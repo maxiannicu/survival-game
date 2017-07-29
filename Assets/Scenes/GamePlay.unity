@@ -572,8 +572,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 480
+    height: 270
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1033,8 +1033,8 @@ Prefab:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: [{fileID: 114991471066069850, guid: 6ed5b5495fc9f5642b52718bca3a76a0,
-        type: 2}]
+    m_RemovedComponents:
+    - {fileID: 114991471066069850, guid: 6ed5b5495fc9f5642b52718bca3a76a0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6ed5b5495fc9f5642b52718bca3a76a0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1344103040
@@ -1451,7 +1451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8a9c49f66071344882302c8f420e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _capsuleCount: 0
 --- !u!4 &1838698994
 Transform:
   m_ObjectHideFlags: 0
@@ -1612,7 +1611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a176ac7e2b3d014f854f6e477752cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ellapsedTime: 0
   PeriodTime: 20
+  <CurrentPeriod>k__BackingField: 0
 --- !u!1 &2119813286
 GameObject:
   m_ObjectHideFlags: 0
