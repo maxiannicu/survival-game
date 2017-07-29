@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212852217810397008}
   - component: {fileID: 50264329075928348}
   - component: {fileID: 60237296888129234}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4408329224451512}
   - component: {fileID: 114314198319042400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MovementController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &60237296888129234
 PolygonCollider2D:
   m_ObjectHideFlags: 1

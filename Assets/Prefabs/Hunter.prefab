@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212262274295614866}
   - component: {fileID: 60322868627644244}
   - component: {fileID: 50375586937796908}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
