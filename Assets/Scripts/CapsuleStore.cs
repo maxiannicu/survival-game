@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CapsuleStore : MonoBehaviour {
+public static class CapsuleStore {
 	#region Fields
-	private int _capsuleCount = 0;
+	private static int _capsuleCount = 0;
 	#endregion
 
 	#region Properties
-	public int Capsules {
+	public static int Capsules {
 		get {
 			return _capsuleCount;
 		}
 	}
 
-	public int MaxCapsules {
+	public static int MaxCapsules {
 		get {
 			return 10;
 		}
@@ -23,7 +23,7 @@ public class CapsuleStore : MonoBehaviour {
 	#endregion
 
 	#region Methods
-	public void AddCapsule(){
+	public static void AddCapsule(){
 		if (Capsules >= MaxCapsules)
 			return;
 		
