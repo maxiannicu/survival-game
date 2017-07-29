@@ -26,6 +26,7 @@ public class BuyDroid : MonoBehaviour {
 	}
 
 	void OnTrigerEnter2D(Collider2D coll) {
+		Debug.Log ("dsadsa");
 		if (coll.gameObject.tag == "Farmer") {
 			allowBuying = true;
 			Debug.Log ("Farmer detected");
