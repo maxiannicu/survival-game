@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Ground
+  - Sky
+  - GameObjects
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 1024647399
+    locked: 0
+  - name: Ground
+    uniqueID: 1380227669
+    locked: 0
+  - name: GameObjects
+    uniqueID: 807105485
+    locked: 0
+  - name: UI
+    uniqueID: 1450187413
     locked: 0
