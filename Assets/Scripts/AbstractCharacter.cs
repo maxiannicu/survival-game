@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractCharacter : MonoBehaviour {
+public class AbstractCharacter : BaseGameObject {
 	public float Speed;
 	public int Life = 100;
 	public Rigidbody2D rigidBody;

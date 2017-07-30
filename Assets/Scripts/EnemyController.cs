@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AssemblyCSharp;
+using System;
 
 public class EnemyController : AbstractCharacter {
 
 	private PeriodController period;
 	public GameObject database;
 	private bool isFighting;
+	private RegisteredTimer damageAction;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +19,7 @@ public class EnemyController : AbstractCharacter {
 	
 	// Update is called once per frame
 	void Update () {
+		base.Update ();
 		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
 			if(!isFighting)
 				if (gameObject.transform.position.x > database.transform.position.x) {
@@ -31,18 +34,22 @@ public class EnemyController : AbstractCharacter {
 	}
 
 
-	void OnTriggerStay2D(Collider2D coll) {
+	void OnTriggerEnter2D(Collider2D coll) {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
 		if (healthController != null) {
 			isFighting = true;
 			Debug.Log ("Started fighting");
-			healthController.Damage (1); // harcoded
+			damageAction = new RegisteredTimer (() => healthController.Damage (1), 1);
+			StartTimer (damageAction);
 		}
 	}
-
+		
 
 	void OnTriggerExit2D() {
 		isFighting = false;
+		Debug.Log ("Finished fighting");
+	
+		UnregisterAction (damageAction);
 	}
 
 
