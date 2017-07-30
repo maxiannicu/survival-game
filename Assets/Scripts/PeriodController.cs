@@ -6,16 +6,20 @@ using System;
 public class PeriodController : MonoBehaviour {
 	#region Fields
 	private float _ellapsedTime;
-	public int PeriodTime = Constants.Game.PeriodTime;
-	public static PeriodController Instance;
+	public static int PeriodTime = Constants.Game.PeriodTime;
 	#endregion
 
 	#region Events
-	public event EventHandler<PeriodChangeEvent> PeriodChangeEvent;
+	public static event EventHandler<PeriodChangeEvent> PeriodChangeEvent;
 	#endregion
 
 	#region Properties
-	public Period CurrentPeriod {
+	public static Period CurrentPeriod {
+		get;
+		private set;
+	}
+
+	public static int Cycle {
 		get;
 		private set;
 	}
@@ -25,7 +29,7 @@ public class PeriodController : MonoBehaviour {
 
 	public void Start(){
 		CurrentPeriod = Period.Day;
-		Instance = this;
+		Cycle = 0;
 	}
 
 	public void Update(){
@@ -33,11 +37,19 @@ public class PeriodController : MonoBehaviour {
 
 		if (_ellapsedTime >= PeriodTime) {
 			CurrentPeriod = (CurrentPeriod == Period.Day) ? Period.Night : Period.Day;
+
+			if (CurrentPeriod == Period.Day) {
+				Cycle++;
+			}
 			_ellapsedTime = 0;
 
-			if (PeriodChangeEvent != null) {
-				PeriodChangeEvent (this, new PeriodChangeEvent (CurrentPeriod));
-			}
+			RaiseEvent ();
+		}
+	}
+
+	private void RaiseEvent(){
+		if (PeriodChangeEvent != null) {
+			PeriodChangeEvent (this, new PeriodChangeEvent (Cycle,CurrentPeriod));
 		}
 	}
 	#endregion

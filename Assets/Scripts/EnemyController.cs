@@ -5,9 +5,8 @@ using AssemblyCSharp;
 using System;
 
 public class EnemyController : AbstractCharacter {
-
+	public GameObject _base;
 	private PeriodController period;
-	public GameObject database;
 	public bool fighting;
 	private RegisteredTimer damageAction;
 	private Animator animator;
@@ -16,15 +15,14 @@ public class EnemyController : AbstractCharacter {
 	// Use this for initialization
 	void Start () {
 		fighting = false;
-		Speed = 0.3f;
 		animator = GetComponent<Animator>();
-
+		_base = GameObject.FindGameObjectWithTag ("Database");
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
 		base.Update();
-		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
+		if (PeriodController.CurrentPeriod == Period.Day) {
 			if (!fighting) {
 				moveEnemy (-1);
 			}
@@ -34,7 +32,7 @@ public class EnemyController : AbstractCharacter {
 	}
 
 	private void moveEnemy(int direction) {
-		if (gameObject.transform.position.x > database.transform.position.x) {
+		if (gameObject.transform.position.x > _base.transform.position.x) {
 			move (direction);
 		} else {
 			move (-direction);

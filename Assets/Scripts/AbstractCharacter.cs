@@ -10,7 +10,6 @@ public class AbstractCharacter : BaseGameObject {
 	protected void move(float direction) {
 		if (!IsDead ()) {
 			changeDirection (direction);
-			Debug.Log (Speed);
 			rigidBody.transform.position = new Vector2 (
 				rigidBody.transform.position.x + (Speed * direction * Time.deltaTime),
 				rigidBody.transform.position.y

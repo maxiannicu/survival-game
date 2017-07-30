@@ -14,7 +14,6 @@ public class DroidCharacter : AbstractCharacter {
 	// Use this for initialization
 	void Start () {
 		_upgradableComponent = GetComponent<UpgradableComponent> ();
-		Speed = 0.5f;
 		SetIdle (true);
 		hasJobAssigned = false;
 		isGoingToDatabase = false;

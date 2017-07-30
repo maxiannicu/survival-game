@@ -4,8 +4,13 @@ using UnityEngine;
 using System;
 
 public class PeriodChangeEvent : EventArgs {
-	public PeriodChangeEvent(Period period){
+	public PeriodChangeEvent(int cycle, Period period){
 		CurrentPeriod = period;
+	}
+
+	public int Cycle {
+		get;
+		private set;
 	}
 
 	public Period CurrentPeriod {
