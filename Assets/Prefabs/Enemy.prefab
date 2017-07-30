@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164434956547824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.56, y: -1.44, z: 0}
+  m_LocalPosition: {x: 7.82, y: -1.547, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,10 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  Life: 100
   rigidBody: {fileID: 50699383518012574}
   database: {fileID: 0}
-  isFighting: 0
+  fighting: 0
 --- !u!114 &114272062505505548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +169,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 807105485
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8c27a66176776d242823a5b5d598c536, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
