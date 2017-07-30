@@ -346,6 +346,11 @@ Prefab:
       propertyPath: database
       value: 
       objectReference: {fileID: 2119813286}
+    - target: {fileID: 60733773485367282, guid: 6ed5b5495fc9f5642b52718bca3a76a0,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ed5b5495fc9f5642b52718bca3a76a0, type: 2}
   m_IsPrefabParent: 0
