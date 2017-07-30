@@ -32,7 +32,6 @@ public class AbstractCharacter : MonoBehaviour {
 		Debug.Log ("DSAdas");
 		if (coll.gameObject.tag == "Enemy")
 			coll.gameObject.SendMessage("ApplyDamage", 10);
-
 	}
 
 	protected bool IsDead(){
@@ -42,5 +41,6 @@ public class AbstractCharacter : MonoBehaviour {
 	protected void SetStateIsDead(bool isDead) {
 		this.isDead = isDead; 
 	}
+
 
 }

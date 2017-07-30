@@ -7,9 +7,9 @@ public class HealthController : MonoBehaviour {
 
 	public void Damage(int damage){
 		Health -= damage;
-
+		Debug.Log ("Damage!!!");
 		if (Health <= 0) {
-			Destroy (this);
+			Destroy (this.gameObject);
 		}
 	}
 }
