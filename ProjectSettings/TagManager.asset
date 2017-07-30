@@ -20,8 +20,8 @@ TagManager:
   - Sky
   - GameObjects
   - Player
-  - 
-  - 
+  - FirstMontain
+  - SecondMontain
   - 
   - 
   - 
@@ -44,8 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: yky
+  - name: Sky
     uniqueID: 1024647399
+    locked: 0
+  - name: FirstMontain
+    uniqueID: 964508871
+    locked: 0
+  - name: SecondMontain
+    uniqueID: 2649703291
     locked: 0
   - name: Ground
     uniqueID: 1380227669

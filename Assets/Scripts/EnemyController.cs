@@ -20,16 +20,21 @@ public class EnemyController : AbstractCharacter {
 	// Update is called once per frame
 	void Update () {
 		base.Update();
-		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
-			if(!isFighting)
-				if (gameObject.transform.position.x > database.transform.position.x) {
-					move (-1);
-				} else {
-					move (1);
-				}
+		if (PeriodController.Instance.CurrentPeriod == Period.Night) {
+			if (!isFighting) {
+				moveEnemy (-1);
+			}
 
 		} else {
-			
+			moveEnemy (1);
+		}
+	}
+
+	private void moveEnemy(int direction) {
+		if (gameObject.transform.position.x > database.transform.position.x) {
+			move (direction);
+		} else {
+			move (-direction);
 		}
 	}
 
