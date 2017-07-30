@@ -23,11 +23,5 @@ public class AbstractCharacter : MonoBehaviour {
 			rigidBody.transform.localScale = new Vector3 (1f, 1f, 1f);
 		}
 	}
-
-	void OnTriggerEnter2D(Collider2D coll) {
-		Debug.Log ("DSAdas");
-		if (coll.gameObject.tag == "Enemy")
-			coll.gameObject.SendMessage("ApplyDamage", 10);
-
-	}
+		
 }

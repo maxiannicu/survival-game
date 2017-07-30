@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PeriodController {
+public class PeriodController : MonoBehaviour {
 	#region Fields
 	private float _ellapsedTime;
 	public int PeriodTime = Constants.Game.PeriodTime;
