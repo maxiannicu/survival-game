@@ -40,9 +40,7 @@ public class ScrollingBackgroundController : MonoBehaviour {
 	private void ScrollLeft() {
 		layers[rightIndex].position = Vector3.right * (layers [leftIndex].position.x - backgroundSize);
 		leftIndex = rightIndex;
-		Debug.Log (layers [rightIndex].position.y);
 		rightIndex--;
-		Debug.Log ("Left index: "+rightIndex);
 		if (rightIndex < 0) {
 			rightIndex = layers.Length - 1;
 		}
@@ -51,9 +49,7 @@ public class ScrollingBackgroundController : MonoBehaviour {
 	private void ScrollRight() {
 		layers[leftIndex].position = Vector3.right * (layers [rightIndex].position.x + backgroundSize);
 		rightIndex = leftIndex;
-		Debug.Log (layers [rightIndex].position.y);
 		leftIndex++;
-		Debug.Log ("Right index: "+rightIndex);
 		if (leftIndex == layers.Length) {
 			leftIndex = 0;
 		}
