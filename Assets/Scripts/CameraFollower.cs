@@ -9,7 +9,7 @@ public class CameraFollower : MonoBehaviour {
 	void Update () {
 		gameObject.transform.position = new Vector3 (
 			follower.transform.position.x,
-			follower.transform.position.y + 1,
+			follower.transform.position.y + 0.5f,
 			gameObject.transform.position.z
 		);
 	}
