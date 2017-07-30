@@ -7,7 +7,7 @@ public static class Constants {
 		public const int InitialCapsules = 0;
 		public const int MaxCapsules = 10;
 		public const int MaxCapsulesOnMapAtTime = 20;
-		public const int PeriodTime = 20;
+		public const int PeriodTime = 3;
 		public const int CapsuleSpawnInterval = 1;
 	}
 }

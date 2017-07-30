@@ -784,23 +784,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114099168531552024, guid: c3ae620ad1b4070499b7886e8e230bcc,
-        type: 2}
-      propertyPath: database
-      value: 
-      objectReference: {fileID: 2119813286}
-    - target: {fileID: 1164434956547824, guid: c3ae620ad1b4070499b7886e8e230bcc, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4598055110449546, guid: c3ae620ad1b4070499b7886e8e230bcc, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4598055110449546, guid: c3ae620ad1b4070499b7886e8e230bcc, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114063734838405596, guid: c3ae620ad1b4070499b7886e8e230bcc,
         type: 2}
       propertyPath: database
@@ -2014,6 +1997,52 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1754543964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1754543965}
+  - component: {fileID: 1754543966}
+  m_Layer: 0
+  m_Name: EnemyGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754543965
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754543964}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.89, y: 2.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754543966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754543964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9251f59faef42214ea8635d726a79d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenerationPoints:
+  - {x: -9.45, y: -8}
+  - {x: 8, y: 9.45}
+  GenerationY: 0
+  GenerationNumber: 0100000002000000030000000400000005000000
+  Enemy: {fileID: 1164434956547824, guid: c3ae620ad1b4070499b7886e8e230bcc, type: 2}
 --- !u!1 &1756389962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a176ac7e2b3d014f854f6e477752cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PeriodTime: 20
 --- !u!1 &2119813286
 GameObject:
   m_ObjectHideFlags: 0
