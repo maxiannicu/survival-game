@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public class UpgradableComponent : MonoBehaviour {
-	private int _currentLevel = 0;
+	private int _currentLevel = -1;
 	public List<int> UpgradePrices;
 
 	public int Level {
@@ -13,9 +13,9 @@ public class UpgradableComponent : MonoBehaviour {
 		}
 	}
 
-	public bool IsBought {
+	public bool IsPurchased {
 		get {
-			return  _currentLevel > 0;
+			return  _currentLevel > -1;
 		}
 	}
 
@@ -30,11 +30,11 @@ public class UpgradableComponent : MonoBehaviour {
 			if (!IsUpgradable) {
 				throw new Exception ("This element could not be upgraded anymore");
 			}
-			return UpgradePrices [_currentLevel];
+			return UpgradePrices [_currentLevel+1];
 		}
 	}
 
-	public void Upgarde(){
+	public void Upgrade(){
 		if (!IsUpgradable) {
 			throw new Exception ("Could not upgrade. Maximal level reached.");
 		}

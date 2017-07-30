@@ -1,31 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : AbstractCharacter {
 
-	private bool allowBuying = false;
+	// Use this for initialization
+	void Start () {
+		Speed = 9f;
+	}
 
-	// Update is called once per frame
+
 	void Update () {
-		//Debug.Log(allowBuying);
-		if (allowBuying) {
-			if (Input.GetKeyDown(KeyCode.B)) {
-				try {
-					Debug.Log("Droid bought");
-					CapsuleStore.Buy ();
-				} catch (Exception e) {
-					Debug.LogException (e, this);
-				}
-			}
+		DirectionUpdate ();
+	}
+
+	public void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.tag == "Capsule") {
+			CapsuleStore.AddCapsule ();
+			Destroy (collision.gameObject);
 		}
 	}
 
-	void OnTrigerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Farmer") {
-			allowBuying = true;
-			Debug.Log ("Farmer detected");
-		}
+	private void DirectionUpdate(){
+		var direction = Input.GetAxis ("Horizontal");
+		move (direction);
 	}
 }
