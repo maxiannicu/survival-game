@@ -5,7 +5,7 @@ using System;
 
 public class DroidCharacter : AbstractCharacter {
 
-	private bool isDead;
+
 	private bool hasJobAssigned;
 	private bool isGoingToDatabase;
 	public GameObject database;
@@ -14,8 +14,8 @@ public class DroidCharacter : AbstractCharacter {
 
 	// Use this for initialization
 	void Start () {
-		Speed = 0;
-		isDead = true;
+		Speed = 0.5f;
+		SetStateIsDead (true);
 		hasJobAssigned = false;
 		isGoingToDatabase = false;
 		direction = -1;
@@ -24,20 +24,16 @@ public class DroidCharacter : AbstractCharacter {
 	
 	// Update is called once per frame
 	void Update () {
-				
-		if (isGoingToDatabase) {
-
-			if (gameObject.transform.position.x > database.transform.position.x) {
-				move (-1);
+			if (isGoingToDatabase) {
+				if (gameObject.transform.position.x > database.transform.position.x) {
+					move (-1);
+				} else {
+					move (1);
+				}
 			} else {
-				move (1);
+				move (direction);
 			}
-		} else {
-			move (direction);
-		}
-			
 	}
-
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Capsule" && !hasJobAssigned && !isGoingToDatabase) {
@@ -45,7 +41,6 @@ public class DroidCharacter : AbstractCharacter {
 			isGoingToDatabase = true;
 			Debug.Log ("Capsule detected");
 		}
-
 		if (coll.gameObject.tag == "Database" && isGoingToDatabase) {
 			CapsuleStore.AddCapsule ();
 			isGoingToDatabase = false;
