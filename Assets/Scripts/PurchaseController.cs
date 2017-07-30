@@ -9,7 +9,7 @@ public class PurchaseController : MonoBehaviour {
 	public TooltipRender TooltipRender;
 
 	public void Update(){
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+		if (Input.GetKeyDown (KeyCode.DownArrow)) {
 			if (_upgradableComponent != null && _upgradableComponent.IsUpgradable) {
 				try {
 					_upgradableComponent.Upgrade ();
@@ -43,7 +43,15 @@ public class PurchaseController : MonoBehaviour {
 	private void ShowPrice(){
 		if (_upgradableComponent.IsUpgradable) {
 			CapsulePriceRender.Activate (_upgradableComponent.UpgradePrice);
-			TooltipRender.ShowUpgradeTooltip ();
+			switch (_upgradableComponent.UpgradeType) {
+			case UpgradableComponent.Type.Activable:
+				TooltipRender.ShowActivateTooltip ();
+				break;
+			case UpgradableComponent.Type.Upgradable:
+				TooltipRender.ShowUpgradeTooltip ();
+				break;
+			}
+
 		} else {
 			HidePrice ();
 		}
