@@ -5,33 +5,39 @@ using System;
 
 public class PurchaseController : MonoBehaviour {
 	private System.Diagnostics.Stopwatch _stopWatch = new System.Diagnostics.Stopwatch();
+	private int _currentState = 0;
 	private UpgradableComponent _upgradableComponent = null;
 	public CapsulePriceRender CapsulePriceRender;
 	public TooltipRender TooltipRender;
 
 	public void Update(){
-		if (Input.GetKeyDown (KeyCode.DownArrow)) {
-			_stopWatch.Start ();
-		}
+		if (_upgradableComponent != null && _upgradableComponent.IsUpgradable && CapsuleStore.HasCapsules(_currentState+1)) {
+			if(Input.GetKeyUp(KeyCode.DownArrow)){
+				if (_currentState < _upgradableComponent.UpgradePrice) {
+					_currentState++;
+					ResetTimer ();
 
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			if (_upgradableComponent != null && _upgradableComponent.IsUpgradable) {
-				if (_stopWatch.ElapsedMilliseconds >= _upgradableComponent.UpgradePrice * Constants.Game.MilliSecondsToBuyOneCapsule) {
+				} 
+
+				if (_currentState == _upgradableComponent.UpgradePrice) {
 					try {
 						_upgradableComponent.Upgrade ();
-						_stopWatch.Stop ();
+						_currentState = 0;
+						ResetTimer();
 						Debug.Log ("Purchased");
 					} catch (Exception ex) {
 						Debug.Log ("Could not upgrade, cause : " + ex.Message);
 					}
 				}
-				ShowPrice ();
 			}
+
 		}
 
-		if (Input.GetKeyUp (KeyCode.DownArrow)) {
-			_stopWatch.Stop ();
+		if (_stopWatch.ElapsedMilliseconds >= Constants.Game.MaxBuyDelayBetweenButtons) {
+			_currentState = 0;
 		}
+
+		ShowPrice ();
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision) {
@@ -48,13 +54,13 @@ public class PurchaseController : MonoBehaviour {
 			Debug.Log ("Exiting area of upgradable component");
 		}
 		_upgradableComponent = null;
+		_currentState = 0;
 		HidePrice ();
 	}
 
 	private void ShowPrice(){
-		if (_upgradableComponent.IsUpgradable) {
-			var progress = (int)Math.Truncate(1.0f * _stopWatch.ElapsedMilliseconds / Constants.Game.MilliSecondsToBuyOneCapsule);
-			CapsulePriceRender.Show (progress, _upgradableComponent.UpgradePrice);
+		if (_upgradableComponent != null && _upgradableComponent.IsUpgradable) {
+			CapsulePriceRender.Show (_currentState, _upgradableComponent.UpgradePrice);
 			switch (_upgradableComponent.UpgradeType) {
 			case UpgradableComponent.Type.Activable:
 				TooltipRender.ShowActivateTooltip ();
@@ -71,5 +77,10 @@ public class PurchaseController : MonoBehaviour {
 	private void HidePrice(){
 		CapsulePriceRender.Hide ();
 		TooltipRender.HideTooltip ();
+	}
+
+	private void ResetTimer(){
+		_stopWatch.Reset ();
+		_stopWatch.Start ();
 	}
 }

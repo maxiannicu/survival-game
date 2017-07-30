@@ -10,7 +10,7 @@ public class PlayerController : AbstractCharacter {
 		DirectionUpdate ();
 
 		if (_collidingCapsule != null) {
-			if (Input.GetKeyUp (KeyCode.DownArrow)) {
+			if (Input.GetKey (KeyCode.DownArrow)) {
 				Extract ();
 			}
 		}

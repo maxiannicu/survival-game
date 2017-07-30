@@ -9,6 +9,6 @@ public static class Constants {
 		public const int MaxCapsulesOnMapAtTime = 20;
 		public const int PeriodTime = 20;
 		public const int CapsuleSpawnInterval = 1;
-		public const int MilliSecondsToBuyOneCapsule = 2000;
+		public const int MaxBuyDelayBetweenButtons = 3000;
 	}
 }
