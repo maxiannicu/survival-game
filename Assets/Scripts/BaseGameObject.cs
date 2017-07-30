@@ -6,8 +6,12 @@ using System;
 public class BaseGameObject : MonoBehaviour {
 	private IList<RegisteredTimer> _actions = new List<RegisteredTimer> ();
 
-	public void StartTimer(Action action,float interval){
-		_actions.Add (new RegisteredTimer (action,interval));
+	public void StartTimer(RegisteredTimer registeredTimer){
+		_actions.Add (registeredTimer);
+	}
+
+	public void UnregisterAction(RegisteredTimer registeredTimer) {
+		_actions.Remove (registeredTimer);
 	}
 
 	// Update is called once per frame
@@ -17,7 +21,7 @@ public class BaseGameObject : MonoBehaviour {
 		}
 	}
 
-	private class RegisteredTimer {
+	public class RegisteredTimer {
 		private readonly Action _action;
 		private readonly float _interval;
 
