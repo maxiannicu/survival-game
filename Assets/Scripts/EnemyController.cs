@@ -8,23 +8,26 @@ public class EnemyController : AbstractCharacter {
 
 	private PeriodController period;
 	public GameObject database;
-	private bool isFighting;
+	public bool fighting;
 	private RegisteredTimer damageAction;
+	private Animator animator;
+
 
 	// Use this for initialization
 	void Start () {
-		isFighting = false;
-		Speed = 1f;
+		fighting = false;
+		Speed = 0.3f;
+		animator = GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		base.Update();
-		if (PeriodController.Instance.CurrentPeriod == Period.Night) {
-			if (!isFighting) {
+		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
+			if (!fighting) {
 				moveEnemy (-1);
 			}
-
 		} else {
 			moveEnemy (1);
 		}
@@ -42,8 +45,9 @@ public class EnemyController : AbstractCharacter {
 	void OnTriggerEnter2D(Collider2D coll) {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
 		if (healthController != null) {
-			isFighting = true;
+			fighting = true;
 			Debug.Log ("Started fighting");
+			animator.SetBool ("Fighting", true);
 			damageAction = new RegisteredTimer (() => healthController.Damage (1), 1);
 			StartTimer (damageAction);
 		}
@@ -51,8 +55,9 @@ public class EnemyController : AbstractCharacter {
 		
 
 	void OnTriggerExit2D() {
-		isFighting = false;
+		fighting = false;
 		Debug.Log ("Finished fighting");
+		animator.SetBool ("Fighting", false);
 		UnregisterAction (damageAction);
 	}
 
