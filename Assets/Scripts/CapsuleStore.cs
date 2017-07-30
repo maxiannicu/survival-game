@@ -24,12 +24,10 @@ public static class CapsuleStore {
 	#endregion
 
 	#region Methods
-	public static void AddCapsule(){
-		if (Capsules >= MaxCapsules)
-			return;
-		
-		_capsuleCount++;
+	public static void AddCapsule(int capsules){
+		_capsuleCount = Math.Min (_capsuleCount + capsules, Constants.Game.MaxCapsules);
 	}
+
 
 	public static bool HasCapsules(int count){
 		return Capsules >= count;

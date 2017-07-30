@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractCharacter : BaseGameObject {
-
 	protected bool isDead;
 	public float Speed;
-	public int Life = 100;
 	public Rigidbody2D rigidBody;
-
 
 	protected void move(float direction) {
 		if (!IsDead ()) {
 			changeDirection (direction);
+			Debug.Log (Speed);
 			rigidBody.transform.position = new Vector2 (
 				rigidBody.transform.position.x + (Speed * direction * Time.deltaTime),
 				rigidBody.transform.position.y
@@ -29,7 +27,6 @@ public class AbstractCharacter : BaseGameObject {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		Debug.Log ("DSAdas");
 		if (coll.gameObject.tag == "Enemy")
 			coll.gameObject.SendMessage("ApplyDamage", 10);
 	}

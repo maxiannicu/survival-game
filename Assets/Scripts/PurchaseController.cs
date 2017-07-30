@@ -9,7 +9,7 @@ public class PurchaseController : MonoBehaviour {
 	public TooltipRender TooltipRender;
 
 	public void Update(){
-		if (Input.GetKeyDown (KeyCode.DownArrow)) {
+		if (Input.GetKeyUp (KeyCode.DownArrow)) {
 			if (_upgradableComponent != null && _upgradableComponent.IsUpgradable) {
 				try {
 					_upgradableComponent.Upgrade ();

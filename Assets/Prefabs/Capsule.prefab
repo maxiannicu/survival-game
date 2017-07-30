@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4387984607118592}
   - component: {fileID: 212620389007951030}
   - component: {fileID: 61789361339447248}
-  - component: {fileID: 114042067672321220}
   m_Layer: 10
   m_Name: Capsule
   m_TagString: Capsule
@@ -67,19 +66,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.63}
   m_EdgeRadius: 0
---- !u!114 &114042067672321220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662450583039024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29dd65bc077ef1440ae1cd830919b448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpgradePrices: ffffffff
-  UpgradeType: 2
 --- !u!212 &212620389007951030
 SpriteRenderer:
   m_ObjectHideFlags: 1
