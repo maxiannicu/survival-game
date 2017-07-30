@@ -41,6 +41,9 @@ public class PurchaseController : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision) {
+		if (_upgradableComponent != null) {
+			return;
+		}
 		_upgradableComponent = collision.GetComponent<UpgradableComponent> ();
 
 		if (_upgradableComponent != null) {			
@@ -50,6 +53,10 @@ public class PurchaseController : MonoBehaviour {
 	}
 
 	public void OnTriggerExit2D(Collider2D collision) {
+		var component = collision.GetComponent<UpgradableComponent> ();
+		if (component != _upgradableComponent) {
+			return;
+		}
 		if (_upgradableComponent != null) {
 			Debug.Log ("Exiting area of upgradable component");
 		}
