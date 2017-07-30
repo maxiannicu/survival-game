@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractCharacter : MonoBehaviour {
+public class AbstractCharacter : BaseGameObject {
 
 	protected bool isDead;
 	public float Speed;
