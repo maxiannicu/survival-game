@@ -19,7 +19,7 @@ public class EnemyController : AbstractCharacter {
 	
 	// Update is called once per frame
 	void Update () {
-		base.Update ();
+		base.Update();
 		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
 			if(!isFighting)
 				if (gameObject.transform.position.x > database.transform.position.x) {
@@ -48,7 +48,6 @@ public class EnemyController : AbstractCharacter {
 	void OnTriggerExit2D() {
 		isFighting = false;
 		Debug.Log ("Finished fighting");
-	
 		UnregisterAction (damageAction);
 	}
 
