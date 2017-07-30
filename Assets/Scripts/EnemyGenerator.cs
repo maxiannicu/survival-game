@@ -25,8 +25,12 @@ public class EnemyGenerator : MonoBehaviour {
 			for (int i = 0; i < number; i++) {
 				for (int e = 0; e < GenerationPoints.Count; e++) {
 					var range = GenerationPoints [e];
+					var x = MathUtils.RandomInRange (range.x, range.y);
+					Debug.Log ("Generated on X: " + x);
 					var gameObject = Instantiate(Enemy,new Vector3(
-						range.x + (float)_random.NextDouble() * (Mathf.Abs(Mathf.Abs(range.y) - Mathf.Abs(range.x))),GenerationY,0
+						x,
+						GenerationY,
+						0
 					),Enemy.transform.rotation);
 					gameObject.transform.parent = this.gameObject.transform;
 				}

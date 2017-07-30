@@ -10,7 +10,6 @@ public class CapsuleGenerator : MonoBehaviour {
 	public Vector2 GenerationRange; // range of capsule generation
 	public float GenerationPositionY = 0;
 	public GameObject Capsule;
-	public GameObject GenerationLayer;
 	public int MaxCapsuleAtOneTime = Constants.Game.MaxCapsules;
 				
 	// Update is called once per frame
@@ -25,8 +24,8 @@ public class CapsuleGenerator : MonoBehaviour {
 	}
 
 	private void GenerateNewCapsule(){
-		var newPosition = new Vector2 ((float)_random.NextDouble () * (GenerationRange.y - GenerationRange.x) + GenerationRange.x, GenerationPositionY);
+		var newPosition = new Vector2 (MathUtils.RandomInRange(GenerationRange.x,GenerationRange.y), GenerationPositionY);
 		var gameObject = Instantiate (Capsule, newPosition,Capsule.transform.rotation);
-		gameObject.transform.parent = GenerationLayer.transform;
+		gameObject.transform.parent = this.gameObject.transform;
 	}
 }

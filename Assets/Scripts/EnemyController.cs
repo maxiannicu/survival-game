@@ -5,33 +5,34 @@ using AssemblyCSharp;
 using System;
 
 public class EnemyController : AbstractCharacter {
-
+	public GameObject _base;
 	private PeriodController period;
-	public GameObject database;
-	private bool isFighting;
+	public bool fighting;
 	private RegisteredTimer damageAction;
+	private Animator animator;
+
 
 	// Use this for initialization
 	void Start () {
-		isFighting = false;
-		Speed = 1f;
+		fighting = false;
+		animator = GetComponent<Animator>();
+		_base = GameObject.FindGameObjectWithTag ("Database");
 	}
 	
 	// Update is called once per frame
 	public void Update () {
 		base.Update();
-		if (PeriodController.CurrentPeriod == Period.Night) {
-			if (!isFighting) {
+		if (PeriodController.CurrentPeriod == Period.Day) {
+			if (!fighting) {
 				moveEnemy (-1);
 			}
-
 		} else {
 			moveEnemy (1);
 		}
 	}
 
 	private void moveEnemy(int direction) {
-		if (gameObject.transform.position.x > database.transform.position.x) {
+		if (gameObject.transform.position.x > _base.transform.position.x) {
 			move (direction);
 		} else {
 			move (-direction);
@@ -42,8 +43,9 @@ public class EnemyController : AbstractCharacter {
 	void OnTriggerEnter2D(Collider2D coll) {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
 		if (healthController != null) {
-			isFighting = true;
+			fighting = true;
 			Debug.Log ("Started fighting");
+			animator.SetBool ("Fighting", true);
 			damageAction = new RegisteredTimer (() => healthController.Damage (1), 1);
 			StartTimer (damageAction);
 		}
@@ -51,8 +53,9 @@ public class EnemyController : AbstractCharacter {
 		
 
 	void OnTriggerExit2D() {
-		isFighting = false;
+		fighting = false;
 		Debug.Log ("Finished fighting");
+		animator.SetBool ("Fighting", false);
 		UnregisterAction (damageAction);
 	}
 
