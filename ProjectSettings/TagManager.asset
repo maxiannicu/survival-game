@@ -22,7 +22,7 @@ TagManager:
   - Player
   - FirstMontain
   - SecondMontain
-  - 
+  - Base
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1380227669
+    locked: 0
+  - name: Base
+    uniqueID: 2789862955
     locked: 0
   - name: GameObjects
     uniqueID: 807105485
