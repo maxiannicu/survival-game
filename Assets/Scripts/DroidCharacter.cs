@@ -43,7 +43,7 @@ public class DroidCharacter : AbstractCharacter {
 			Debug.Log ("Capsule detected");
 		}
 		if (coll.gameObject.tag == "Database" && isGoingToDatabase) {
-			CapsuleStore.AddCapsule ();
+			CapsuleStore.AddCapsule (1);
 			isGoingToDatabase = false;
 			//direction = getRandomDirection ();
 			Debug.Log ("Added Capsule");

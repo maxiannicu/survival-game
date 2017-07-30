@@ -6,6 +6,7 @@ using System;
 public class UpgradableComponent : MonoBehaviour {
 	private int _currentLevel = -1;
 	public List<int> UpgradePrices;
+	public Type UpgradeType = Type.Upgradable;
 
 	public int Level {
 		get {
@@ -45,5 +46,10 @@ public class UpgradableComponent : MonoBehaviour {
 
 		CapsuleStore.Buy (UpgradePrice);
 		_currentLevel++;
+	}
+
+	public enum Type {
+		Upgradable,
+		Activable
 	}
 }
