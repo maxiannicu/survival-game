@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CapsulePriceRender : MonoBehaviour {
 	private int _count = 0;
@@ -39,4 +40,5 @@ public class CapsulePriceRender : MonoBehaviour {
 
 		}
 	}
+
 }

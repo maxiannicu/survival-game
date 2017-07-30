@@ -6,9 +6,10 @@ using System;
 public class PurchaseController : MonoBehaviour {
 	private UpgradableComponent _upgradableComponent = null;
 	public CapsulePriceRender CapsulePriceRender;
+	public TooltipRender TooltipRender;
 
 	public void Update(){
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+		if (Input.GetKeyDown (KeyCode.DownArrow)) {
 			if (_upgradableComponent != null && _upgradableComponent.IsUpgradable) {
 				try {
 					_upgradableComponent.Upgrade ();
@@ -25,6 +26,7 @@ public class PurchaseController : MonoBehaviour {
 		_upgradableComponent = collision.GetComponent<UpgradableComponent> ();
 
 		if (_upgradableComponent != null) {
+			
 			Debug.Log ("Found upgradable component");
 			ShowPrice ();
 		}
@@ -41,6 +43,15 @@ public class PurchaseController : MonoBehaviour {
 	private void ShowPrice(){
 		if (_upgradableComponent.IsUpgradable) {
 			CapsulePriceRender.Activate (_upgradableComponent.UpgradePrice);
+			switch (_upgradableComponent.UpgradeType) {
+			case UpgradableComponent.Type.Activable:
+				TooltipRender.ShowActivateTooltip ();
+				break;
+			case UpgradableComponent.Type.Upgradable:
+				TooltipRender.ShowUpgradeTooltip ();
+				break;
+			}
+
 		} else {
 			HidePrice ();
 		}
@@ -48,5 +59,6 @@ public class PurchaseController : MonoBehaviour {
 
 	private void HidePrice(){
 		CapsulePriceRender.DeActivate ();
+		TooltipRender.HideTooltip ();
 	}
 }
