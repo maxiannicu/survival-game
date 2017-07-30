@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 
 public class DroidCharacter : AbstractCharacter {
-
-	private bool isDead;
+	private UpgradableComponent _upgradableComponent;
 	private bool hasJobAssigned;
 	private bool isGoingToDatabase;
 	public GameObject database;
@@ -14,8 +13,9 @@ public class DroidCharacter : AbstractCharacter {
 
 	// Use this for initialization
 	void Start () {
-		Speed = 0;
-		isDead = true;
+		_upgradableComponent = GetComponent<UpgradableComponent> ();
+		Speed = 0.5f;
+		SetIdle (true);
 		hasJobAssigned = false;
 		isGoingToDatabase = false;
 		direction = -1;
@@ -24,9 +24,8 @@ public class DroidCharacter : AbstractCharacter {
 	
 	// Update is called once per frame
 	void Update () {
-				
+		SetIdle (!_upgradableComponent.IsPurchased);
 		if (isGoingToDatabase) {
-
 			if (gameObject.transform.position.x > database.transform.position.x) {
 				move (-1);
 			} else {
@@ -35,9 +34,7 @@ public class DroidCharacter : AbstractCharacter {
 		} else {
 			move (direction);
 		}
-			
 	}
-
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Capsule" && !hasJobAssigned && !isGoingToDatabase) {
@@ -45,7 +42,6 @@ public class DroidCharacter : AbstractCharacter {
 			isGoingToDatabase = true;
 			Debug.Log ("Capsule detected");
 		}
-
 		if (coll.gameObject.tag == "Database" && isGoingToDatabase) {
 			CapsuleStore.AddCapsule ();
 			isGoingToDatabase = false;

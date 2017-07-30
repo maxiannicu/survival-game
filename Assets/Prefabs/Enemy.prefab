@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212627494612910138}
   - component: {fileID: 60382700122283244}
   - component: {fileID: 50699383518012574}
+  - component: {fileID: 114099168531552024}
   - component: {fileID: 114272062505505548}
   m_Layer: 10
   m_Name: Enemy
@@ -29,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4598055110449546
 Transform:
   m_ObjectHideFlags: 1
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164434956547824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -2.9, z: 0}
+  m_LocalPosition: {x: 7.82, y: -2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +73,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -100,6 +101,21 @@ PolygonCollider2D:
       - {x: -0.57, y: -0.52}
       - {x: -0.5, y: -0.64}
       - {x: 0.38, y: -0.64}
+--- !u!114 &114099168531552024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164434956547824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91722e4afe7aeb4087b3d58981f0c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  Life: 100
+  rigidBody: {fileID: 50699383518012574}
+  database: {fileID: 0}
 --- !u!114 &114272062505505548
 MonoBehaviour:
   m_ObjectHideFlags: 1

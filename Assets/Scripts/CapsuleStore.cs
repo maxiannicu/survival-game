@@ -7,7 +7,6 @@ public static class CapsuleStore {
 	
 	#region Fields
 	private static int _capsuleCount = Constants.Game.InitialCapsules;
-	private const int _droidPrice = Constants.Prices.Droid;
 	#endregion
 
 	#region Properties
@@ -32,16 +31,16 @@ public static class CapsuleStore {
 		_capsuleCount++;
 	}
 
-	public static bool CanBuyDroid(){
-		return Capsules > _droidPrice;
+	public static bool HasCapsules(int count){
+		return Capsules >= count;
 	}
 
-	public static void BuyDroid(){
-		if (!CanBuyDroid ()) {
+	public static void Buy(int price){
+		if (!HasCapsules(price)) {
 			throw new Exception ("Not enoght capsules");
 		}
 
-		_capsuleCount -= _droidPrice;
+		_capsuleCount -= price;
 	}
 
 	#endregion
