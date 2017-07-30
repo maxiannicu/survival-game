@@ -19,17 +19,22 @@ public class EnemyController : AbstractCharacter {
 	
 	// Update is called once per frame
 	void Update () {
-		base.Update ();
+		base.Update();
 		if (PeriodController.Instance.CurrentPeriod == Period.Day) {
-			if(!isFighting)
-				if (gameObject.transform.position.x > database.transform.position.x) {
-					move (-1);
-				} else {
-					move (1);
-				}
+			if (!isFighting) {
+				moveEnemy (-1);
+			}
 
 		} else {
-			
+			moveEnemy (1);
+		}
+	}
+
+	private void moveEnemy(int direction) {
+		if (gameObject.transform.position.x > database.transform.position.x) {
+			move (direction);
+		} else {
+			move (-direction);
 		}
 	}
 
@@ -48,7 +53,6 @@ public class EnemyController : AbstractCharacter {
 	void OnTriggerExit2D() {
 		isFighting = false;
 		Debug.Log ("Finished fighting");
-	
 		UnregisterAction (damageAction);
 	}
 

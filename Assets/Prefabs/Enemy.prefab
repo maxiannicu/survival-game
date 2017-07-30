@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212627494612910138}
   - component: {fileID: 60382700122283244}
   - component: {fileID: 50699383518012574}
-  - component: {fileID: 114099168531552024}
+  - component: {fileID: 114063734838405596}
   - component: {fileID: 114272062505505548}
   m_Layer: 10
   m_Name: Enemy
@@ -101,7 +101,7 @@ PolygonCollider2D:
       - {x: -0.57, y: -0.52}
       - {x: -0.5, y: -0.64}
       - {x: 0.38, y: -0.64}
---- !u!114 &114099168531552024
+--- !u!114 &114063734838405596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
