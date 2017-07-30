@@ -34,7 +34,7 @@ public class BuyDroid : MonoBehaviour {
 				Debug.Log ("Try to buy");
 				try {
 					Debug.Log("Droid bought");
-					CapsuleStore.BuyDroid ();
+					CapsuleStore.Buy ();
 				} catch (Exception e) {
 					Debug.LogException (e, this);
 				}

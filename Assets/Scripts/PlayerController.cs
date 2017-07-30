@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.B)) {
 				try {
 					Debug.Log("Droid bought");
-					CapsuleStore.BuyDroid ();
+					CapsuleStore.Buy ();
 				} catch (Exception e) {
 					Debug.LogException (e, this);
 				}
