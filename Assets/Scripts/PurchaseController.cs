@@ -9,6 +9,7 @@ public class PurchaseController : MonoBehaviour {
 	private UpgradableComponent _upgradableComponent = null;
 	public CapsulePriceRender CapsulePriceRender;
 	public TooltipRender TooltipRender;
+    public AudioClip upgrade;
 
 	public void Update(){
 		if (_upgradableComponent != null && _upgradableComponent.IsUpgradable && CapsuleStore.HasCapsules(_currentState+1)) {
@@ -22,6 +23,7 @@ public class PurchaseController : MonoBehaviour {
 				if (_currentState == _upgradableComponent.UpgradePrice) {
 					try {
 						_upgradableComponent.Upgrade ();
+                        SoundManager.instance.PlaySingle(upgrade);
 						_currentState = 0;
 						ResetTimer();
 						Debug.Log ("Purchased");
