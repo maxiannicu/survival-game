@@ -36,11 +36,6 @@ public class AbstractCharacter : BaseGameObject {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Enemy")
-			coll.gameObject.SendMessage("ApplyDamage", 10);
-	}
-
 	protected bool IsDead(){
 		return isDead;
 	}

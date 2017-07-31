@@ -20,12 +20,10 @@ public class EnemyGenerator : MonoBehaviour {
 	public void OnPeriodChange(object sender, PeriodChangeEvent periodChangeEvent){
 		if (periodChangeEvent.CurrentPeriod == Period.Night) {
 			var number = GenerationNumber [Mathf.Min (GenerationNumber.Count - 1, periodChangeEvent.Cycle)];
-			Debug.Log ("Generating " + number + " enemies on each spot");
 			for (int i = 0; i < number; i++) {
 				for (int e = 0; e < GenerationPoints.Count; e++) {
 					var range = GenerationPoints [e];
 					var x = MathUtils.RandomInRange (range.x, range.y);
-					Debug.Log ("Generated on X: " + x);
 					var gameObject = Instantiate(Enemy,new Vector3(
 						x,
 						GenerationY,

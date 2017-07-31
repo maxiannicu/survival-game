@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : AbstractCharacter
 {
@@ -16,6 +17,10 @@ public class PlayerController : AbstractCharacter
 				Extract ();
 			}
 		}
+	}
+
+	void OnDestroy(){
+		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 
 	private void DirectionUpdate(){
