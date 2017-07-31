@@ -9,6 +9,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 	private GameObject _database;
 	public int state = 0; // 0 - idle, 1 - movingUp, 2 - day mode, 3 - night mode
 	private System.Random random = new System.Random();
+	private RegisteredTimer _action;
 
 
 	// Use this for initialization
@@ -104,6 +105,8 @@ public class DroidFighterCharacter : AbstractCharacter {
 
 	private void goToTheWall() {
 		if (gameObject.transform.position.x + random.NextDouble() < -3.6 || gameObject.transform.position.x + random.NextDouble() > 10) {
+			_action = new RegisteredTimer (() => shoot(), 1);
+			StartTimer (_action);
 			state = 4;
 		}
 
@@ -113,7 +116,6 @@ public class DroidFighterCharacter : AbstractCharacter {
 			move(1);
 		}
 
-		shoot ();
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
 		}
@@ -125,6 +127,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
+			UnregisterAction (_action);
 		}
 	}
 
