@@ -4,16 +4,17 @@ using UnityEngine;
 using System;
 
 public class DroidCharacter : AbstractCharacter {
+	private GameObject database;
 	private UpgradableComponent _upgradableComponent;
 	private bool hasJobAssigned;
 	private bool isGoingToDatabase;
-	public GameObject database;
 	private int direction;
 	private System.Random random = new System.Random();
 
 	// Use this for initialization
 	void Start () {
 		_upgradableComponent = GetComponent<UpgradableComponent> ();
+		database = GameObject.FindGameObjectWithTag ("Database");
 		SetIdle (true);
 		hasJobAssigned = false;
 		isGoingToDatabase = false;

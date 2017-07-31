@@ -5,10 +5,15 @@ using AssemblyCSharp;
 using System;
 
 public class EnemyController : AbstractCharacter {
-	public GameObject _base;
-	public bool fighting;
+	private GameObject _base;
+	private bool fighting;
 	private RegisteredTimer damageAction;
 	private Animator animator;
+	private GameObject _killingGameObject;
+
+
+	public int DamageCaused = 1;
+	public int FightInterval = 1;
 
 
 	// Use this for initialization
@@ -27,20 +32,29 @@ public class EnemyController : AbstractCharacter {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
-		if (healthController != null) {
+		if (Helper.CanFire (coll.gameObject)) {
 			fighting = true;
 			animator.SetBool ("Fighting", true);
-			damageAction = new RegisteredTimer (() => healthController.Damage (1), 1);
+			damageAction = new RegisteredTimer (Shoot, FightInterval);
 			StartTimer (damageAction);
 		}
 	}
 		
 
-	void OnTriggerExit2D() {
-		fighting = false;
-		animator.SetBool ("Fighting", false);
-		UnregisterAction (damageAction);
+	void OnTriggerExit2D(Collider2D coll) {
+		if (coll.gameObject == _killingGameObject) {
+			StopFighting ();
+		}
+	}
+
+	public void Shoot(){
+		if (Helper.CanFire (_killingGameObject)) {
+			var healthController = _killingGameObject.GetComponent<HealthController> ();
+			healthController.Damage (DamageCaused);
+		} else {
+			_killingGameObject = null;
+			StopFighting ();
+		}
 	}
 
 	public int GetMovingDirection(){		
@@ -51,6 +65,12 @@ public class EnemyController : AbstractCharacter {
 		} else {
 			return PeriodController.CurrentPeriod == Period.Day ? -1 : 1;
 		}
+	}
+
+	private void StopFighting(){
+		fighting = false;
+		animator.SetBool ("Fighting", false);
+		UnregisterAction (damageAction);
 	}
 
 }

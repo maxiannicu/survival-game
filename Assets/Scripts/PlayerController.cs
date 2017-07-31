@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : AbstractCharacter {
 	private GameObject _collidingCapsule;
@@ -17,7 +18,7 @@ public class PlayerController : AbstractCharacter {
 	}
 
 	void OnDesotroy(){
-		Application.LoadLevel("Menu");
+		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 
 	private void DirectionUpdate(){

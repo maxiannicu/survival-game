@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BaseController : MonoBehaviour {
 
 	void OnDesotroy(){
-		Application.LoadLevel("Menu");
+		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 }
