@@ -20,7 +20,6 @@ public class CapsulePriceRender : MonoBehaviour {
 	public void Show(int active,int total){
 		this._active = active;
 		this._total = total;
-		Debug.Log("Showing "+active+"/"+total);
 		enabled = true;
 	}
 

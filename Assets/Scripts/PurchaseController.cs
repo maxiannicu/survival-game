@@ -37,7 +37,9 @@ public class PurchaseController : MonoBehaviour {
 			_currentState = 0;
 		}
 
-		ShowPrice ();
+		if (_upgradableComponent != null) {
+			ShowPrice ();
+		}
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision) {

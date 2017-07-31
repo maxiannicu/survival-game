@@ -33,7 +33,6 @@ public class PeriodChangeSprite : MonoBehaviour {
 			var newColorValue = progress * (1 - Constants.Animation.PeriodSwitchDownBarier) + Constants.Animation.PeriodSwitchDownBarier;
 			_spriteRender.color = new Color (newColorValue, newColorValue, newColorValue);
 
-			Debug.Log (progress);
 			if (_animationDelta >= Constants.Animation.PeriodSwitch) {
 				_animationRunning = false;
 				_animationDelta = 0;
