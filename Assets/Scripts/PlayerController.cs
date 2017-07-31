@@ -8,10 +8,15 @@ public class PlayerController : AbstractCharacter
     public AudioClip gotCoinClip;
 	private GameObject _collidingCapsule;
 	public TooltipRender TooltipRender;
+    private Animator animator;
 
-	void Update () {
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    void Update () {
 		DirectionUpdate ();
-
 		if (_collidingCapsule != null) {
 			if (Input.GetKey (KeyCode.DownArrow)) {
 				Extract ();
@@ -23,8 +28,10 @@ public class PlayerController : AbstractCharacter
 		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 
-	private void DirectionUpdate(){
-		var direction = Input.GetAxis ("Horizontal");
+	private void DirectionUpdate()
+	{
+	    var direction = Input.GetAxis("Horizontal");
+        animator.SetBool("Staying",direction==0);
 		move (direction);
 	}
 
