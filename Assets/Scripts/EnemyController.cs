@@ -21,25 +21,9 @@ public class EnemyController : AbstractCharacter {
 	// Update is called once per frame
 	public void Update () {
 		base.Update();
-		if (PeriodController.CurrentPeriod == Period.Night) {
-			if (!fighting) {
-				moveEnemy (-1);
-			}
-		} else {
-			moveEnemy (1);
-		}
 
-		moveEnemy (GetMovingDirection());
+		move (GetMovingDirection());
 	}
-
-	private void moveEnemy(int direction) {
-		if (gameObject.transform.position.x > _base.transform.position.x) {
-			move (direction);
-		} else {
-			move (-direction);
-		}
-	}
-
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();

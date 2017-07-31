@@ -14,4 +14,9 @@ public static class Constants {
 		public const float PeriodSwitch = 3.0f;
 		public const float PeriodSwitchDownBarier = 0.6f;
 	}
+
+	public static class Limits {
+		public const float LeftSide = -12f;
+		public const float RightSide = 15f;
+	}
 }
