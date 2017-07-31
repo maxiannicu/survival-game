@@ -7,7 +7,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 	private int direction;
 	public GameObject Bullet;
 	private GameObject _database;
-	private int _state = 0; // 0 - idle, 1 - movingUp, 2 - day mode, 3 - night mode
+	public int state = 0; // 0 - idle, 1 - movingUp, 2 - day mode, 3 - night mode
 	private System.Random random = new System.Random();
 
 
@@ -17,15 +17,16 @@ public class DroidFighterCharacter : AbstractCharacter {
 		_database = GameObject.FindGameObjectWithTag ("Database");
 		SetIdle (true);
 		direction = GetRandomDirection ();
-		_state = 0;
+		state = 0;
 
 	}
 	
 	// Update is called once per frame
+
 	public new void Update () {
 		SetIdle (!_upgradableComponent.IsPurchased);
 
-		switch (_state) {
+		switch (state) {
 		case 0:
 			checkIfIdle ();// In this state droid is idle
 			break;
@@ -36,25 +37,29 @@ public class DroidFighterCharacter : AbstractCharacter {
 			wanderAround (); // Day time - just random walking
 			break;
 		case 3:
+			goToTheWall ();
 			break;
-			
+		case 4:
+			killEnemies ();
+			break;
+
 		}
 			
 	}
 
 	private void moveUp() {
-		if (rigidBody.transform.position.y < -1.3f && _state == 1) {
+		if (rigidBody.transform.position.y < -1.3f && state == 1) {
 			
 			rigidBody.transform.position = new Vector2 (
 				rigidBody.transform.position.x,
 				rigidBody.transform.position.y + (0.5f * Time.deltaTime)
 			);
 		} else {
-			_state = 2;
+			state = 2;
 		}
 
 		if(PeriodController.CurrentPeriod.Equals(Period.Night)) {
-			_state = 3;
+			state = 3;
 		}
 	}
 
@@ -73,18 +78,22 @@ public class DroidFighterCharacter : AbstractCharacter {
 
 	private void wanderAround() {
 		move (direction);
-		if (this.gameObject.transform.position.x < -5) {
+		if (this.gameObject.transform.position.x < -4) {
 			direction = 1;
 		}
 
-		if (this.gameObject.transform.position.x > 5) {
+		if (this.gameObject.transform.position.x > 10) {
 			direction = -1;
+		}
+
+		if(PeriodController.CurrentPeriod.Equals(Period.Night)) {
+			state = 3;
 		}
 	}
 
 	private void checkIfIdle() {
 		if (!IsDead ()) {
-			_state = 1;
+			state = 1;
 		}
 	}
 		
@@ -93,12 +102,32 @@ public class DroidFighterCharacter : AbstractCharacter {
 		return random.NextDouble () > 0.5 ? -1 : 1;
 	}
 
-	private void searchingForEnemies() {
+	private void goToTheWall() {
+		if (gameObject.transform.position.x + random.NextDouble() < -3.6 || gameObject.transform.position.x + random.NextDouble() > 10) {
+			state = 4;
+		}
 
+		if (Mathf.Abs (gameObject.transform.position.x - 10) > Mathf.Abs (-4 - gameObject.transform.position.x)) {
+			move (-1);
+		} else {
+			move(1);
+		}
+
+		shoot ();
+		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
+			state = 1;
+		}
+			
+	}
+
+	private void killEnemies() {
+		shoot ();
 
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
-			_state = 3;
+			state = 1;
 		}
 	}
+
+
 
 }
