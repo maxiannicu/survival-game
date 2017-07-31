@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour {
+	public int Damage = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -19,9 +20,11 @@ public class BulletController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Enemy") {
-			HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
-			healthController.Damage (1);
-			Destroy (this.gameObject);
+			if (Helper.CanFire (coll.gameObject)) {				
+				HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
+				healthController.Damage (Damage);
+				Destroy (this.gameObject);
+			}
 		}
 	}
 }

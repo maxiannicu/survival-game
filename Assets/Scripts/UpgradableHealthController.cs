@@ -14,9 +14,17 @@ public class UpgradableHealthController : HealthController {
 
 	public void Update(){
 		if (_level != _upgradableComponent.Level) {
-			_level = _upgradableComponent.Level;
-			Health = UpgradableHealth [Mathf.Min(_level,UpgradableHealth.Count - 1)]; 
+			CopyUpgradeParams ();
 		}
 	}
 
+	protected override void OnKilled(){
+		_upgradableComponent.Reset ();
+		CopyUpgradeParams ();
+	}
+
+	private void CopyUpgradeParams(){
+		_level = _upgradableComponent.Level;
+		Health = UpgradableHealth [Mathf.Min(_level,UpgradableHealth.Count - 1)]; 
+	}
 }

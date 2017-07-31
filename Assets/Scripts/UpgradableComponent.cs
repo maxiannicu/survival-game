@@ -48,6 +48,10 @@ public class UpgradableComponent : MonoBehaviour {
 		_currentLevel++;
 	}
 
+	public void Reset(){
+		_currentLevel = -1;
+	}
+
 	public enum Type {
 		Upgradable,
 		Activable
