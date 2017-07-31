@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac300822b34f354f81122803cab6b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Health: 5
 --- !u!114 &114264526121554742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0.48
   rigidBody: {fileID: 50375586937796908}
+  KillDistance: 0.5
   Bullet: {fileID: 1866307697028194, guid: c64c19a1de24eac4ba4b213b64fc2399, type: 2}
+  state: 0
+  KillFrequencySeconds: 1.5
 --- !u!114 &114694202793550376
 MonoBehaviour:
   m_ObjectHideFlags: 1

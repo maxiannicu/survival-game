@@ -126,8 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   rigidBody: {fileID: 50699383518012574}
-  _base: {fileID: 0}
-  fighting: 0
+  DamageCaused: 1
+  FightInterval: 1
 --- !u!114 &114272062505505548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac300822b34f354f81122803cab6b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Health: 3
 --- !u!114 &114889289315485626
 MonoBehaviour:
   m_ObjectHideFlags: 1

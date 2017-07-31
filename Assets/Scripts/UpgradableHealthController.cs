@@ -25,6 +25,6 @@ public class UpgradableHealthController : HealthController {
 
 	private void CopyUpgradeParams(){
 		_level = _upgradableComponent.Level;
-		Health = UpgradableHealth [Mathf.Min(_level,UpgradableHealth.Count - 1)]; 
+		Health = UpgradableHealth [Mathf.Max(0,Mathf.Min(_level,UpgradableHealth.Count - 1))]; 
 	}
 }
