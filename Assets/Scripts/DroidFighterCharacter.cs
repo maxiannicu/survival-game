@@ -22,7 +22,10 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 	
 	// Update is called once per frame
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2999fbe0cb137830e4489975032da075b9325dbd
 	public new void Update () {
 		SetIdle (!_upgradableComponent.IsPurchased);
 

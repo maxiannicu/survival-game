@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114279680547076308}
   - component: {fileID: 61945231379092942}
   - component: {fileID: 114342788853249912}
+  - component: {fileID: 114652770737312002}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -109,6 +110,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradePrices: 0100000002000000
   UpgradeType: 0
+--- !u!114 &114652770737312002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935727800755576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14755c2336182344ebfceb44d298df96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212535700184782714
 SpriteRenderer:
   m_ObjectHideFlags: 1
