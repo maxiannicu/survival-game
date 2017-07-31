@@ -22,7 +22,8 @@ public class EnemyController : AbstractCharacter {
 	public void Update () {
 		base.Update();
 
-		move (GetMovingDirection());
+		if(!fighting || PeriodController.CurrentPeriod == Period.Day)
+			move (GetMovingDirection());
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
