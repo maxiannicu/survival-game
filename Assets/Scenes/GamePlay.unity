@@ -3104,6 +3104,11 @@ Prefab:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 8300000, guid: b8e1ef8fc577bf140a0a8053821b4007, type: 3}
+    - target: {fileID: 114698964489743958, guid: 83a97bc48d9edcb45a7d0d542b71dd7e,
+        type: 2}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83a97bc48d9edcb45a7d0d542b71dd7e, type: 2}
   m_IsPrefabParent: 0

@@ -5,11 +5,15 @@ using UnityEngine;
 public class DroidFighterCharacter : AbstractCharacter {
 	private UpgradableComponent _upgradableComponent;
 	private int direction;
+
+	public float KillDistance = 0.5f;
 	public GameObject Bullet;
 	private GameObject _database;
 	public int state = 0; // 0 - idle, 1 - movingUp, 2 - day mode, 3 - night mode
+	public float KillFrequencySeconds = 1.0f;
 	private System.Random random = new System.Random();
 	private RegisteredTimer _action;
+	private float _lastKill = 0;
 
 
 	// Use this for initialization
@@ -19,12 +23,13 @@ public class DroidFighterCharacter : AbstractCharacter {
 		SetIdle (true);
 		direction = GetRandomDirection ();
 		state = 0;
-
+		_lastKill = KillFrequencySeconds*2;
 	}
 	
 	// Update is called once per frame
 
 	public new void Update () {
+		_lastKill += Time.deltaTime;
 		SetIdle (!_upgradableComponent.IsPurchased);
 
 		switch (state) {
@@ -68,8 +73,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 				             gameObject.transform.position,
 				             gameObject.transform.rotation);	
 
-			bullet.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-direction * 6f, 0); 
-	
+			bullet.GetComponent<Rigidbody2D> ().velocity = new Vector2 (direction * 4f, 0); 	
 	}
 
 
@@ -79,7 +83,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 			direction = 1;
 		}
 
-		if (this.gameObject.transform.position.x > 4) {
+		if (this.gameObject.transform.position.x > 11) {
 			direction = -1;
 		}
 
@@ -99,24 +103,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 		return random.NextDouble () > 0.5 ? -1 : 1;
 	}
 
-	private void goToTheWall() {
-		if (gameObject.transform.position.x + random.NextDouble() < -3.6 || gameObject.transform.position.x + random.NextDouble() > 10) {
-			state = 4;
-		}
-
-		if (Mathf.Abs (gameObject.transform.position.x - 10) > Mathf.Abs (-4 - gameObject.transform.position.x)) {
-			move (-1);
-		} else {
-			move(1);
-		}
-	
-
-
-			
-	}
-
 	private void killEnemies() {
-
 		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
 		float minDistance = int.MaxValue;
 		float position = 0f;
@@ -124,10 +111,15 @@ public class DroidFighterCharacter : AbstractCharacter {
 
 		foreach (GameObject obj in gameObjects) {
 			if (Mathf.Abs (obj.transform.position.x - this.gameObject.transform.position.x) < minDistance) {
-				minDistance = Mathf.Abs (obj.transform.position.x - this.gameObject.transform.position.x);
-				position = obj.transform.position.x;
+				var distance = Mathf.Abs (obj.transform.position.x - this.gameObject.transform.position.x);
+
+				if (distance < minDistance) {
+					minDistance = distance;
+					position = obj.transform.position.x;
+				}
 			}
 		}
+
 
 		if (position > this.gameObject.transform.position.x) {
 			direction = 1;
@@ -137,16 +129,15 @@ public class DroidFighterCharacter : AbstractCharacter {
 			move (direction);
 		}
 
-		if (Mathf.Abs (position - this.gameObject.transform.position.x)  < 0.5) {
-			shoot ();
+		if (Mathf.Abs (position - this.gameObject.transform.position.x)  < KillDistance) {
+			if (_lastKill >= KillFrequencySeconds) {
+				shoot ();
+				_lastKill = 0;
+			}
 		} 
 
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
 		}
-
 	}
-
-
-
 }
