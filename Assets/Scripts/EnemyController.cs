@@ -22,17 +22,9 @@ public class EnemyController : AbstractCharacter {
 	public void Update () {
 		base.Update();
 
-		moveEnemy (GetMovingDirection());
+		if(!fighting || PeriodController.CurrentPeriod == Period.Day)
+			move (GetMovingDirection());
 	}
-
-	private void moveEnemy(int direction) {
-		if (gameObject.transform.position.x > _base.transform.position.x) {
-			move (direction);
-		} else {
-			move (-direction);
-		}
-	}
-
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();

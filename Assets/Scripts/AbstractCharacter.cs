@@ -9,9 +9,20 @@ public class AbstractCharacter : BaseGameObject {
 
 	protected void move(float direction) {
 		if (!IsDead ()) {
+			var oldX = rigidBody.transform.position.x;
+			var newX = oldX + (Speed * direction * Time.deltaTime);
+
+			if (newX < oldX && newX < Constants.Limits.LeftSide) {
+				return;
+			}
+
+			if (newX > oldX && newX > Constants.Limits.RightSide) {
+				return;
+			}
+
 			changeDirection (direction);
 			rigidBody.transform.position = new Vector2 (
-				rigidBody.transform.position.x + (Speed * direction * Time.deltaTime),
+				newX,
 				rigidBody.transform.position.y
 			);
 		}
