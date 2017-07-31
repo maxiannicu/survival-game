@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CapsuleGenerator : MonoBehaviour {
-	private System.Random _random = new System.Random();
 	private const float _scanInterval = Constants.Game.CapsuleSpawnInterval;
 	private float _lastScanTime = _scanInterval;
 

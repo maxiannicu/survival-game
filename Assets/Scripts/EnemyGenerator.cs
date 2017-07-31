@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
-	private System.Random _random = new System.Random();
 	public List<Vector2> GenerationPoints;
 	public float GenerationY;
 	public List<int> GenerationNumber;
