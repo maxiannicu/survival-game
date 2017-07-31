@@ -16,6 +16,10 @@ public class PlayerController : AbstractCharacter {
 		}
 	}
 
+	void OnDesotroy(){
+		Application.LoadLevel("Menu");
+	}
+
 	private void DirectionUpdate(){
 		var direction = Input.GetAxis ("Horizontal");
 		move (direction);
