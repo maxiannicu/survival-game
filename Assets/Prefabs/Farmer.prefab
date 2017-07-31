@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114597191222518994}
   - component: {fileID: 60733773485367282}
   - component: {fileID: 60521922995415828}
+  - component: {fileID: 114279254162589250}
   m_Layer: 10
   m_Name: Farmer
   m_TagString: Farmer
@@ -124,6 +125,17 @@ PolygonCollider2D:
       - {x: 0.125, y: -0.089999996}
       - {x: 0.125, y: 0.01}
       - {x: 0.024999999, y: 0.089999996}
+--- !u!114 &114279254162589250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316936608349610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14755c2336182344ebfceb44d298df96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114485670669210072
 MonoBehaviour:
   m_ObjectHideFlags: 1
