@@ -6,7 +6,6 @@ using System;
 
 public class EnemyController : AbstractCharacter {
 	public GameObject _base;
-	private PeriodController period;
 	public bool fighting;
 	private RegisteredTimer damageAction;
 	private Animator animator;
@@ -22,13 +21,8 @@ public class EnemyController : AbstractCharacter {
 	// Update is called once per frame
 	public void Update () {
 		base.Update();
-		if (PeriodController.CurrentPeriod == Period.Day) {
-			if (!fighting) {
-				moveEnemy (-1);
-			}
-		} else {
-			moveEnemy (1);
-		}
+
+		moveEnemy (GetMovingDirection());
 	}
 
 	private void moveEnemy(int direction) {
@@ -57,5 +51,14 @@ public class EnemyController : AbstractCharacter {
 		UnregisterAction (damageAction);
 	}
 
+	public int GetMovingDirection(){		
+		var direction = this.transform.position.x - _base.transform.position.x;
+
+		if (direction > 0) {
+			return PeriodController.CurrentPeriod == Period.Day ? 1 : -1;
+		} else {
+			return PeriodController.CurrentPeriod == Period.Day ? -1 : 1;
+		}
+	}
 
 }
