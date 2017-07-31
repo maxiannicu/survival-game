@@ -16,7 +16,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public new void Update () {
 		shoot ();
 		moveUp ();
 		SetIdle (!_upgradableComponent.IsPurchased);

@@ -20,7 +20,7 @@ public class UpgradableHealthController : HealthController {
 		}
 	}
 
-	public void Damage(int damage){
+	public new void Damage(int damage){
 		if (!_upgradableComponent.IsPurchased) {
 			return;
 		}

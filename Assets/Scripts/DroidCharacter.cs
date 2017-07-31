@@ -22,7 +22,7 @@ public class DroidCharacter : AbstractCharacter {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public new void Update () {
 		SetIdle (!_upgradableComponent.IsPurchased);
 		if (isGoingToDatabase) {
 			if (gameObject.transform.position.x > database.transform.position.x) {
