@@ -44,7 +44,6 @@ public class EnemyController : AbstractCharacter {
 		HealthController healthController = coll.gameObject.GetComponent<HealthController> ();
 		if (healthController != null) {
 			fighting = true;
-			Debug.Log ("Started fighting");
 			animator.SetBool ("Fighting", true);
 			damageAction = new RegisteredTimer (() => healthController.Damage (1), 1);
 			StartTimer (damageAction);
@@ -54,7 +53,6 @@ public class EnemyController : AbstractCharacter {
 
 	void OnTriggerExit2D() {
 		fighting = false;
-		Debug.Log ("Finished fighting");
 		animator.SetBool ("Fighting", false);
 		UnregisterAction (damageAction);
 	}
