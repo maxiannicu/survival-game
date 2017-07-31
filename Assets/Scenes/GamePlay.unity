@@ -3098,7 +3098,7 @@ Prefab:
         type: 2}
       propertyPath: gotCoinClip
       value: 
-      objectReference: {fileID: 8300000, guid: a4a985f805561014a87a767302822df0, type: 3}
+      objectReference: {fileID: 8300000, guid: d8f3897b5d2fff44da5d3cc4ad3802c8, type: 3}
     - target: {fileID: 114467479138748548, guid: 83a97bc48d9edcb45a7d0d542b71dd7e,
         type: 2}
       propertyPath: upgrade
