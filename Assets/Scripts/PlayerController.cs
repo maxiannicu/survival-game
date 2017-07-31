@@ -24,7 +24,6 @@ public class PlayerController : AbstractCharacter {
 
 	public void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Capsule") {
-			Debug.Log ("Capsule triggered");
 			_collidingCapsule = coll.gameObject;
 			TooltipRender.ShowExtractTooltip ();
 		}
