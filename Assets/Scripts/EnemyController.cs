@@ -29,7 +29,6 @@ public class EnemyController : AbstractCharacter {
 			moveEnemy (1);
 		}
 
-		moveEnemy (GetMovingDirection());
 	}
 
 	private void moveEnemy(int direction) {

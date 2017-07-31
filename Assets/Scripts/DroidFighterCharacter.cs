@@ -49,11 +49,11 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 
 	private void moveUp() {
-		if (rigidBody.transform.position.y < -1.3f && state == 1) {
+		if (rigidBody.transform.position.y < -1.2f && state == 1) {
 			
 			rigidBody.transform.position = new Vector2 (
 				rigidBody.transform.position.x,
-				rigidBody.transform.position.y + (0.5f * Time.deltaTime)
+				rigidBody.transform.position.y + (0.1f * Time.deltaTime)
 			);
 		} else {
 			state = 2;
@@ -67,13 +67,12 @@ public class DroidFighterCharacter : AbstractCharacter {
 
 
 	private void shoot() {
-		if (!IsDead ()) {
 			var bullet = (GameObject)Instantiate (Bullet,
 				             gameObject.transform.position,
 				             gameObject.transform.rotation);	
 
-			bullet.GetComponent<Rigidbody2D> ().velocity = new Vector2 (direction * 6f, 0); 
-		}
+			bullet.GetComponent<Rigidbody2D> ().velocity = new Vector2 (-direction * 6f, 0); 
+	
 	}
 
 
@@ -104,9 +103,9 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 
 	private void goToTheWall() {
+		_action = new RegisteredTimer (() => shoot(), 1);
+		StartTimer (_action);
 		if (gameObject.transform.position.x + random.NextDouble() < -3.6 || gameObject.transform.position.x + random.NextDouble() > 10) {
-			_action = new RegisteredTimer (() => shoot(), 1);
-			StartTimer (_action);
 			state = 4;
 		}
 
@@ -115,6 +114,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 		} else {
 			move(1);
 		}
+		shoot ();
 
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
@@ -123,8 +123,6 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 
 	private void killEnemies() {
-		shoot ();
-
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
 			UnregisterAction (_action);
