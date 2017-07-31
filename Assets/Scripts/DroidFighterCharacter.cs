@@ -38,9 +38,6 @@ public class DroidFighterCharacter : AbstractCharacter {
 			wanderAround (); // Day time - just random walking
 			break;
 		case 3:
-			goToTheWall ();
-			break;
-		case 4:
 			killEnemies ();
 			break;
 
@@ -49,7 +46,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 
 	private void moveUp() {
-		if (rigidBody.transform.position.y < -1.2f && state == 1) {
+		if (rigidBody.transform.position.y < -1.3f && state == 1) {
 			
 			rigidBody.transform.position = new Vector2 (
 				rigidBody.transform.position.x,
@@ -82,7 +79,7 @@ public class DroidFighterCharacter : AbstractCharacter {
 			direction = 1;
 		}
 
-		if (this.gameObject.transform.position.x > 10) {
+		if (this.gameObject.transform.position.x > 4) {
 			direction = -1;
 		}
 
@@ -103,8 +100,6 @@ public class DroidFighterCharacter : AbstractCharacter {
 	}
 
 	private void goToTheWall() {
-		_action = new RegisteredTimer (() => shoot(), 1);
-		StartTimer (_action);
 		if (gameObject.transform.position.x + random.NextDouble() < -3.6 || gameObject.transform.position.x + random.NextDouble() > 10) {
 			state = 4;
 		}
@@ -114,19 +109,42 @@ public class DroidFighterCharacter : AbstractCharacter {
 		} else {
 			move(1);
 		}
-		shoot ();
+	
 
-		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
-			state = 1;
-		}
+
 			
 	}
 
 	private void killEnemies() {
+
+		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
+		float minDistance = int.MaxValue;
+		float position = 0f;
+
+
+		foreach (GameObject obj in gameObjects) {
+			if (Mathf.Abs (obj.transform.position.x - this.gameObject.transform.position.x) < minDistance) {
+				minDistance = Mathf.Abs (obj.transform.position.x - this.gameObject.transform.position.x);
+				position = obj.transform.position.x;
+			}
+		}
+
+		if (position > this.gameObject.transform.position.x) {
+			direction = 1;
+			move (direction);
+		} else {
+			direction = -1;
+			move (direction);
+		}
+
+		if (Mathf.Abs (position - this.gameObject.transform.position.x)  < 0.5) {
+			shoot ();
+		} 
+
 		if(PeriodController.CurrentPeriod.Equals(Period.Day)) {
 			state = 1;
-			UnregisterAction (_action);
 		}
+
 	}
 
 
