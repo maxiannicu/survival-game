@@ -18,7 +18,6 @@ public class DroidCharacter : AbstractCharacter {
 		hasJobAssigned = false;
 		isGoingToDatabase = false;
 		direction = -1;
-		Debug.Log (direction);
 	}
 	
 	// Update is called once per frame
