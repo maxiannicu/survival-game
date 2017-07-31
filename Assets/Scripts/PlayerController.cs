@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : AbstractCharacter {
+public class PlayerController : AbstractCharacter
+{
+    public AudioClip gotCoinClip;
 	private GameObject _collidingCapsule;
 	public TooltipRender TooltipRender;
 
@@ -40,5 +42,7 @@ public class PlayerController : AbstractCharacter {
 		Destroy (_collidingCapsule);
 		CapsuleStore.AddCapsule (1);
 		Debug.Log ("Extracted");
+        SoundManager.instance.PlaySingle(gotCoinClip);
 	}
+
 }
