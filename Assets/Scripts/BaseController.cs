@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BaseController : MonoBehaviour {
 
-	void OnDesotroy(){
+	void OnDestroy(){
 		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 }

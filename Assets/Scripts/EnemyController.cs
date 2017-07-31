@@ -33,6 +33,7 @@ public class EnemyController : AbstractCharacter {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (Helper.CanFire (coll.gameObject)) {
+			_killingGameObject = coll.gameObject;
 			fighting = true;
 			animator.SetBool ("Fighting", true);
 			damageAction = new RegisteredTimer (Shoot, FightInterval);
@@ -51,6 +52,7 @@ public class EnemyController : AbstractCharacter {
 		if (Helper.CanFire (_killingGameObject)) {
 			var healthController = _killingGameObject.GetComponent<HealthController> ();
 			healthController.Damage (DamageCaused);
+			Debug.Log ("Caused damage of " + DamageCaused + " remained life of " + healthController.Health);
 		} else {
 			_killingGameObject = null;
 			StopFighting ();

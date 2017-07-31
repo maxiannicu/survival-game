@@ -17,7 +17,7 @@ public class PlayerController : AbstractCharacter {
 		}
 	}
 
-	void OnDesotroy(){
+	void OnDestroy(){
 		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 	}
 

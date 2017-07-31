@@ -38,7 +38,6 @@ public class BaseGameObject : MonoBehaviour {
 
 			if (_ellapsed >= _interval) {
 				_ellapsed = 0;
-				Debug.Log ("Interval of " + _interval + " seconds reached. Invoking action");
 				_action ();
 			}
 		}
